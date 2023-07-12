@@ -1,29 +1,26 @@
 fn main() {
+    // > Exp: 1
+    // Bir String değişken oluşturup onun referansını bir fonksiyona atıyoruz
+    // Referans olarak yolladığımız için tekrar bu scope içerisinde aynı değişkeni kullanabiliyoruz
     let greet_message = String::from("Hello, Rust!");
-    print_string(greet_message);
+    print_string(&greet_message);
+    print_string(&greet_message);
 
+    // > Exp: 2
+    // Bu sefer mutable(değiştirilebilir) bir değişken oluşturup onun referansını
+    // create_greet_message ye yolluyoruz. Değişkenin içeriğini değiştirip başka
+    // bir fonksiyonda kullanıyoruz.
     let mut user_name = String::from("Fatih");
-    let greet_message = create_greet_message(&mut user_name);
-    print_string(greet_message);
-
-    let mut some_string = String::from("Lorem Ipsum");
-    {
-        let string_reference_1 = &mut some_string;
-        string_reference_1.insert_str(0, "Reformated ");
-        println!("{}", string_reference_1);
-        println!("{}", some_string);
-    }
-    let string_reference_2 = &mut some_string;
-    string_reference_2.insert_str(11, "2 ");
-    println!("{}", string_reference_2);
-    println!("{}", some_string);
+    create_greet_message(&mut user_name);
+    print_string(&user_name);
 }
 
-fn create_greet_message(user_name: &mut String) -> String {
-    let greet_message = format!("Hello, {}!", user_name);
-    greet_message
+fn create_greet_message(user_name: &mut String) {
+    // aldığımız mutable referansı * ile dereference edip normal haline çevirip
+    // istediğimiz değişikliği yapıyoruz
+    *user_name = format!("Hello, {}!", user_name);
 }
 
-fn print_string(str: String) {
+fn print_string(str: &String) {
     println!("{}", str);
 }
