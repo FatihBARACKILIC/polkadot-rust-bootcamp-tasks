@@ -2,6 +2,7 @@
 
 Polkadot Rust Bootcamp Tasks
 
-|  Week  |   Name    |         Open         |
-| :----: | :-------: | :------------------: |
-| Week 1 | Ownership | [Open](./ownership/) |
+|  Week  |       Name        |         Open          |
+| :----: | :---------------: | :-------------------: |
+| Week 1 |     Ownership     | [Open](./ownership/)  |
+| Week 2 | Simple Calculator | [Open](./calculator/) |
